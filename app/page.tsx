@@ -11,31 +11,8 @@ import {
   Mail,
   Instagram,
 } from "lucide-react"
-
-const programCards = [
-  {
-    title: "Welcome Home Outreach",
-    image: "/images/bible-study.png",
-    description:
-      "A comprehensive support system designed to bridge the gap between incarceration and independence, delivered in collaboration with Luther Rice Memorial Baptist Church.",
-    bullets: ["Holistic Case Management", "Strategic Mentorship", "Workforce Readiness"],
-    cta: "Learn More",
-  },
-  {
-    title: "Neighborhood Impact",
-    image: "/images/community-service.png",
-    description: "The grassroots engine of Dominion, focused on immediate community needs and revitalization.",
-    bullets: ["Outreach Mobiles", "Neighborhood Restoration", "Partner Alliances"],
-    cta: "Join A Team",
-  },
-  {
-    title: "Learning Track",
-    image: "/images/worship-night.png",
-    description: "A structured educational framework built to equip the next generation of leadership.",
-    bullets: ["Foundational Theology", "Leadership Certification", "Community Ethics"],
-    cta: "Start Training",
-  },
-]
+import { ProgramsCarousel } from "@/components/programs-carousel"
+import { programs } from "@/lib/programs"
 
 const merchPreview = [
   "/images/collage.png",
@@ -177,32 +154,7 @@ export default function Home() {
             <div className="w-24 h-2 bg-blue-600 mt-4" />
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {programCards.map((card) => (
-              <div
-                key={card.title}
-                className="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200 hover:shadow-xl transition group"
-              >
-                <div className="aspect-video relative overflow-hidden">
-                  <Image src={card.image} alt={card.title} fill className="object-cover" />
-                </div>
-                <div className="p-8">
-                  <h3 className="text-xl font-bold mb-3">{card.title}</h3>
-                  <p className="text-slate-600 text-sm mb-6 leading-relaxed">{card.description}</p>
-                  <ul className="space-y-3 mb-8">
-                    {card.bullets.map((bullet) => (
-                      <li key={bullet} className="flex items-start gap-2 text-sm font-medium">
-                        <CheckCircle2 size={16} className="text-blue-600 mt-0.5 shrink-0" /> {bullet}
-                      </li>
-                    ))}
-                  </ul>
-                  <button className="w-full py-3 border border-black rounded font-bold text-xs uppercase tracking-widest group-hover:bg-black group-hover:text-white transition">
-                    {card.cta}
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ProgramsCarousel items={programs} />
         </div>
       </section>
 
