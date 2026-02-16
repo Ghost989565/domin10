@@ -1,3 +1,4 @@
+import Image from "next/image"
 import {
   Calendar,
   BookOpen,
@@ -11,15 +12,50 @@ import {
   Instagram,
 } from "lucide-react"
 
+const programCards = [
+  {
+    title: "Welcome Home Outreach",
+    image: "/images/bible-study.png",
+    description: "A comprehensive support system designed to bridge the gap between incarceration and independence.",
+    bullets: ["Holistic Case Management", "Strategic Mentorship", "Workforce Readiness"],
+    cta: "Learn More",
+  },
+  {
+    title: "Neighborhood Impact",
+    image: "/images/community-service.png",
+    description: "The grassroots engine of Dominion, focused on immediate community needs and revitalization.",
+    bullets: ["Outreach Mobiles", "Neighborhood Restoration", "Partner Alliances"],
+    cta: "Join A Team",
+  },
+  {
+    title: "Learning Track",
+    image: "/images/worship-night.png",
+    description: "A structured educational framework built to equip the next generation of leadership.",
+    bullets: ["Foundational Theology", "Leadership Certification", "Community Ethics"],
+    cta: "Start Training",
+  },
+]
+
+const merchPreview = [
+  "/images/collage.png",
+  "/images/mission-statements.png",
+  "/images/genesis-quote.png",
+  "/images/domin10n-logo.png",
+]
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
       <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">D</span>
-            </div>
+          <div className="flex items-center gap-3">
+            <Image
+              src="/images/domin10n-logo.png"
+              alt="Dominion logo"
+              width={36}
+              height={36}
+              className="w-9 h-9 object-contain"
+            />
             <span className="font-black text-2xl tracking-tighter uppercase">Dominion</span>
           </div>
           <div className="hidden md:flex items-center gap-8 font-medium text-sm uppercase tracking-widest">
@@ -46,10 +82,14 @@ export default function Home() {
       </nav>
 
       <section className="relative h-[85vh] flex items-center justify-center bg-slate-900 overflow-hidden">
-        <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70" />
-        <div className="absolute inset-0 z-[-1] flex items-center justify-center bg-slate-800">
-          <p className="text-slate-600 font-mono tracking-tighter">[VIDEO BACKGROUND PLACEHOLDER]</p>
-        </div>
+        <Image
+          src="/images/hero-background.png"
+          alt="Dominion hero background"
+          fill
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/75 via-black/55 to-black/75" />
 
         <div className="relative z-10 text-center px-6 max-w-4xl">
           <h1 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight">
@@ -86,10 +126,14 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div className="aspect-square bg-slate-200 rounded-2xl flex items-center justify-center border-2 border-dashed border-slate-400">
-          <p className="text-slate-500 font-mono text-xs text-center px-10 uppercase tracking-widest">
-            [MEDIA PLACEHOLDER: MISSION STATEMENT GRAPHIC OR TEAM PHOTO]
-          </p>
+        <div className="aspect-square rounded-2xl overflow-hidden border border-slate-300 shadow-lg">
+          <Image
+            src="/images/mission-statements.png"
+            alt="Dominion mission statements"
+            width={1080}
+            height={1350}
+            className="w-full h-full object-cover"
+          />
         </div>
       </section>
 
@@ -101,83 +145,30 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200 hover:shadow-xl transition group">
-              <div className="aspect-video bg-slate-300 flex items-center justify-center relative overflow-hidden">
-                <span className="text-[10px] text-slate-500 absolute top-2 right-2">PLACEHOLDER: 16:9 IMAGE</span>
+            {programCards.map((card) => (
+              <div
+                key={card.title}
+                className="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200 hover:shadow-xl transition group"
+              >
+                <div className="aspect-video relative overflow-hidden">
+                  <Image src={card.image} alt={card.title} fill className="object-cover" />
+                </div>
+                <div className="p-8">
+                  <h3 className="text-xl font-bold mb-3">{card.title}</h3>
+                  <p className="text-slate-600 text-sm mb-6 leading-relaxed">{card.description}</p>
+                  <ul className="space-y-3 mb-8">
+                    {card.bullets.map((bullet) => (
+                      <li key={bullet} className="flex items-start gap-2 text-sm font-medium">
+                        <CheckCircle2 size={16} className="text-blue-600 mt-0.5 shrink-0" /> {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                  <button className="w-full py-3 border border-black rounded font-bold text-xs uppercase tracking-widest group-hover:bg-black group-hover:text-white transition">
+                    {card.cta}
+                  </button>
+                </div>
               </div>
-              <div className="p-8">
-                <h3 className="text-xl font-bold mb-3">Welcome Home Outreach</h3>
-                <p className="text-slate-600 text-sm mb-6 leading-relaxed">
-                  A comprehensive support system designed to bridge the gap between incarceration and independence.
-                </p>
-                <ul className="space-y-3 mb-8">
-                  <li className="flex items-start gap-2 text-sm font-medium">
-                    <CheckCircle2 size={16} className="text-blue-600 mt-0.5 shrink-0" /> Holistic Case Management
-                  </li>
-                  <li className="flex items-start gap-2 text-sm font-medium">
-                    <CheckCircle2 size={16} className="text-blue-600 mt-0.5 shrink-0" /> Strategic Mentorship
-                  </li>
-                  <li className="flex items-start gap-2 text-sm font-medium">
-                    <CheckCircle2 size={16} className="text-blue-600 mt-0.5 shrink-0" /> Workforce Readiness
-                  </li>
-                </ul>
-                <button className="w-full py-3 border border-black rounded font-bold text-xs uppercase tracking-widest group-hover:bg-black group-hover:text-white transition">
-                  Learn More
-                </button>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200 hover:shadow-xl transition group">
-              <div className="aspect-video bg-slate-300 flex items-center justify-center relative overflow-hidden">
-                <span className="text-[10px] text-slate-500 absolute top-2 right-2">PLACEHOLDER: 16:9 IMAGE</span>
-              </div>
-              <div className="p-8">
-                <h3 className="text-xl font-bold mb-3">Neighborhood Impact</h3>
-                <p className="text-slate-600 text-sm mb-6 leading-relaxed">
-                  The grassroots engine of Dominion, focused on immediate community needs and revitalization.
-                </p>
-                <ul className="space-y-3 mb-8">
-                  <li className="flex items-start gap-2 text-sm font-medium">
-                    <CheckCircle2 size={16} className="text-blue-600 mt-0.5 shrink-0" /> Outreach Mobiles
-                  </li>
-                  <li className="flex items-start gap-2 text-sm font-medium">
-                    <CheckCircle2 size={16} className="text-blue-600 mt-0.5 shrink-0" /> Neighborhood Restoration
-                  </li>
-                  <li className="flex items-start gap-2 text-sm font-medium">
-                    <CheckCircle2 size={16} className="text-blue-600 mt-0.5 shrink-0" /> Partner Alliances
-                  </li>
-                </ul>
-                <button className="w-full py-3 border border-black rounded font-bold text-xs uppercase tracking-widest group-hover:bg-black group-hover:text-white transition">
-                  Join A Team
-                </button>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200 hover:shadow-xl transition group">
-              <div className="aspect-video bg-slate-300 flex items-center justify-center relative overflow-hidden">
-                <span className="text-[10px] text-slate-500 absolute top-2 right-2">PLACEHOLDER: 16:9 IMAGE</span>
-              </div>
-              <div className="p-8">
-                <h3 className="text-xl font-bold mb-3">Learning Track</h3>
-                <p className="text-slate-600 text-sm mb-6 leading-relaxed">
-                  A structured educational framework built to equip the next generation of leadership.
-                </p>
-                <ul className="space-y-3 mb-8">
-                  <li className="flex items-start gap-2 text-sm font-medium">
-                    <CheckCircle2 size={16} className="text-blue-600 mt-0.5 shrink-0" /> Foundational Theology
-                  </li>
-                  <li className="flex items-start gap-2 text-sm font-medium">
-                    <CheckCircle2 size={16} className="text-blue-600 mt-0.5 shrink-0" /> Leadership Certification
-                  </li>
-                  <li className="flex items-start gap-2 text-sm font-medium">
-                    <CheckCircle2 size={16} className="text-blue-600 mt-0.5 shrink-0" /> Community Ethics
-                  </li>
-                </ul>
-                <button className="w-full py-3 border border-black rounded font-bold text-xs uppercase tracking-widest group-hover:bg-black group-hover:text-white transition">
-                  Start Training
-                </button>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -187,13 +178,18 @@ export default function Home() {
           <h2 className="text-4xl font-bold mb-4 italic tracking-tight">"The Dominion Story"</h2>
           <p className="text-slate-400 mb-12">Watch our latest outreach documentary and see the mission in action.</p>
 
-          <div className="aspect-video bg-slate-800 rounded-2xl flex items-center justify-center relative shadow-2xl border border-white/10 group cursor-pointer">
-            <div className="w-20 h-20 bg-white text-black rounded-full flex items-center justify-center group-hover:scale-110 transition">
-              <Play size={32} fill="currentColor" />
+          <div className="aspect-video rounded-2xl relative shadow-2xl border border-white/10 group overflow-hidden">
+            <Image
+              src="/images/december-2025-impact.png"
+              alt="Dominion story and impact collage"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-black/45 flex items-center justify-center">
+              <div className="w-20 h-20 bg-white text-black rounded-full flex items-center justify-center group-hover:scale-110 transition">
+                <Play size={32} fill="currentColor" />
+              </div>
             </div>
-            <p className="absolute bottom-4 font-mono text-[10px] text-slate-500 uppercase tracking-widest">
-              [VIDEO EMBED READY: YOUTUBE/VIMEO]
-            </p>
           </div>
         </div>
       </section>
@@ -228,12 +224,9 @@ export default function Home() {
               <h3 className="font-bold text-xl uppercase tracking-widest">Dominion Store</h3>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              {[1, 2, 3, 4].map((i) => (
-                <div
-                  key={i}
-                  className="aspect-square bg-slate-200 rounded-lg flex items-center justify-center relative overflow-hidden"
-                >
-                  <p className="text-[8px] text-slate-500 font-mono tracking-tighter">PRODUCT {i}</p>
+              {merchPreview.map((image, i) => (
+                <div key={image} className="aspect-square bg-slate-200 rounded-lg relative overflow-hidden">
+                  <Image src={image} alt={`Dominion merch preview ${i + 1}`} fill className="object-cover" />
                 </div>
               ))}
             </div>
@@ -323,9 +316,7 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-12 mb-16">
             <div className="col-span-2">
               <div className="flex items-center gap-2 mb-6 text-white">
-                <div className="w-8 h-8 bg-white rounded flex items-center justify-center">
-                  <span className="text-black font-bold text-lg uppercase leading-none">D</span>
-                </div>
+                <Image src="/images/domin10n-logo.png" alt="Dominion icon" width={30} height={30} className="w-8 h-8" />
                 <span className="font-black text-xl tracking-tighter uppercase">Dominion</span>
               </div>
               <p className="text-sm leading-relaxed max-w-sm">
