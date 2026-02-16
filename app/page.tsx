@@ -16,7 +16,8 @@ const programCards = [
   {
     title: "Welcome Home Outreach",
     image: "/images/bible-study.png",
-    description: "A comprehensive support system designed to bridge the gap between incarceration and independence.",
+    description:
+      "A comprehensive support system designed to bridge the gap between incarceration and independence, delivered in collaboration with Luther Rice Memorial Baptist Church.",
     bullets: ["Holistic Case Management", "Strategic Mentorship", "Workforce Readiness"],
     cta: "Learn More",
   },
@@ -88,7 +89,7 @@ export default function Home() {
               height={36}
               className="w-9 h-9 object-contain"
             />
-            <span className="font-black text-2xl tracking-tighter uppercase">Dominion</span>
+            <span className="font-black text-xl tracking-tight uppercase">Dominion Ministry Network</span>
           </div>
           <div className="hidden md:flex items-center gap-8 font-medium text-sm uppercase tracking-widest">
             <a href="#about" className="hover:text-blue-600 transition">
@@ -383,7 +384,7 @@ export default function Home() {
             <div className="col-span-2">
               <div className="flex items-center gap-2 mb-6 text-white">
                 <Image src="/images/domin10n-logo.png" alt="Dominion icon" width={30} height={30} className="w-8 h-8" />
-                <span className="font-black text-xl tracking-tighter uppercase">Dominion</span>
+                <span className="font-black text-lg tracking-tight uppercase">Dominion Ministry Network</span>
               </div>
               <p className="text-sm leading-relaxed max-w-sm">
                 A mission-driven organization dedicated to bridging gaps in community, leadership, and personal growth

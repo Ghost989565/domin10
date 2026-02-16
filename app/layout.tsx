@@ -19,9 +19,9 @@ const spaceMono = Space_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Dominion | Welcome Home Outreach and Community Impact",
+  title: "Dominion Ministry Network",
   description:
-    "Dominion is a community-centered organization building outreach, education, and impact through storytelling, donations, merchandise, and engagement programs.",
+    "Dominion Ministry Network is a community-centered organization building outreach, education, and engagement through storytelling, donations, merchandise, and ministry programs.",
 }
 
 export const viewport: Viewport = {
