@@ -43,6 +43,38 @@ const merchPreview = [
   "/images/domin10n-logo.png",
 ]
 
+const meetingLocations = [
+  {
+    title: "Home Gatherings",
+    detail: "Initial ministry gatherings hosted in-home while scaling to larger spaces.",
+  },
+  {
+    title: "The Pit (Restaurant)",
+    detail: "Potential nearby partner location for Bible study, fellowship, and community events.",
+  },
+  {
+    title: "Community Centers & Parks",
+    detail: "Use of local centers and park properties for outreach and recurring events.",
+  },
+  {
+    title: "Partnering Churches & Ministries",
+    detail: "Collaborative spaces for larger gatherings and aligned ministry activities.",
+  },
+  {
+    title: "Host Houses + Rental Spaces",
+    detail: "Homelike host homes plus flexible event rentals for conferences and growth.",
+  },
+]
+
+const currentRoleNeeds = [
+  "Brainstorm fun gatherings (game nights, cookouts, themed events).",
+  "Scout and select accessible, budget-friendly venues.",
+  "Build event calendars and manage event logistics.",
+  "Connect the ministry with community needs and partners.",
+  "Promote events, document them, and engage the community online.",
+  "Ensure attendees feel welcomed, comfortable, and connected.",
+]
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
@@ -263,6 +295,40 @@ export default function Home() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-slate-100">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10">
+          <div>
+            <h3 className="text-2xl font-black uppercase tracking-tight mb-6">Proposed Meeting Locations</h3>
+            <div className="space-y-4">
+              {meetingLocations.map((location) => (
+                <article key={location.title} className="bg-white border border-slate-200 rounded-lg p-5">
+                  <h4 className="font-bold text-slate-900 mb-1">{location.title}</h4>
+                  <p className="text-sm text-slate-600">{location.detail}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-2xl font-black uppercase tracking-tight mb-6">Current Roles / Needs</h3>
+            <div className="bg-white border border-slate-200 rounded-lg p-6">
+              <ul className="space-y-3">
+                {currentRoleNeeds.map((need) => (
+                  <li key={need} className="flex items-start gap-2 text-sm text-slate-700">
+                    <CheckCircle2 size={16} className="text-blue-600 mt-0.5 shrink-0" />
+                    {need}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <p className="mt-5 text-sm text-slate-600">
+              Additional upcoming initiative from the proposal: <span className="font-semibold">EXCHANGE Expansion</span>{" "}
+              for young adult fellowship and resource-sharing.
+            </p>
           </div>
         </div>
       </section>
